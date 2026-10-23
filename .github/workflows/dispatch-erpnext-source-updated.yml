@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Repo Frappe Docker Workflow
+        env:
+          GH_TOKEN: ${{ secrets.REPO_FRAPPE_DOCKER_TOKEN }}
         run: |
           gh api repos/ToiLaThin-solo-org/frappe_docker/dispatches \
             -f event_type=erpnext-source-updated
