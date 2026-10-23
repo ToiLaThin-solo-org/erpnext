@@ -1,0 +1,14 @@
+name: Trigger ERPNext Image Build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Repo Frappe Docker Workflow
+        run: |
+          gh api repos/ToiLaThin-solo-org/frappe_docker/dispatches \
+            -f event_type=erpnext-source-updated
